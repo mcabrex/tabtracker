@@ -1,0 +1,44 @@
+===========================CLIENT===========================
+
+
+this is vue setup stuff you can just check the repo for more information
+1. npm install -g vue-cli
+    you can use it to build up template projects using vue
+2. vue init webpack __insert_name_here__
+    in this case were just gonna call it client
+    itll take you step by step dont even fret bud
+3. go into the client folder and npm i
+    standard install stuff, install these dependencies locally in a node_modules folder
+4. npm run dev
+    thisll start up the vue.js frontend server set up at local8080 by default
+    whenever you wanna come back to your code just hit up npm run dev again, should be all good in the hood even
+5. commit your stuff to git, commit small and commit often ya silly
+6. go out of the client folder and mkdir server 
+    make a server folder seperate from the client folder so the client and the server dont overlap
+    makes it a little easier to manage and control 
+
+===========================SERVER===========================
+
+1. npm init -f
+    run this command in your new server folder
+    first we initialize a new server project, we use this command to create a package.json and put it in our server folder
+2. npm i --save-dev nodemon eslint
+    nodemon useful for continuously restarting your server
+3. go to your package.json and add a start script as well as a lint script
+        "start" : "./node_modules/nodemon/bin/nodemon.js src/app.js --exec 'npm run lint && node'"
+        "lint" : "./node_modules/.bin/eslint **/*.js"
+    what this is gonna do is run nodemon over some file (src/app.js) which we'll make eventually and run a linter over the code as well as run the server (npm run lint && node)
+4. ./node_modules/eslint/bin/eslint.js --init
+    this is gonna initialize eslint for us
+        >use a popular style guide
+        >standard
+        >Javascript
+5. make a new folder in server and call it src and inside of that make a new file called app.js
+    server => src => app.js
+    inside that app.js we're going to define a web application
+6. npm install --save express body-parser cors morgan
+    then go ahead an require all of that
+7. set up the express server 
+    const app = express()
+8. app.use all those dependencies
+    besides express obvi
