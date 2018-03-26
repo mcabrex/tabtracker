@@ -42,3 +42,12 @@ this is vue setup stuff you can just check the repo for more information
     const app = express()
 8. app.use all those dependencies
     besides express obvi
+
+===========================REGISTER===========================
+1. npm install --save axios
+    a library for doing http requests to a backend
+2. in your client folder create a folder called services and make a file called Api.js
+    client => services => Api.js
+    sets up a type of connector to hit the backend
+3. create another file in services caled AuthenticationService.js
+    hits register endpoint

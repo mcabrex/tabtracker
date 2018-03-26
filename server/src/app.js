@@ -13,9 +13,9 @@ app.use(bodyParser.json())
 // allow our express app to easily parse any json request
 app.use(cors())
 
-app.get('/status', (req, res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'we out here yuh'
+    message: `Your user ${req.body.email} was registered!`
   })
 })
 
