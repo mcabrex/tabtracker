@@ -97,3 +97,40 @@ this is vue setup stuff you can just check the repo for more information
     const config = require('../config/config')
 6.
 
+===========================Controllers===========================
+1. create a folder called controllers in your src folder inside your server folder
+    this is basically where you're gonna have all your endpoints defined
+2. inside that folder create a file called AuthenticationController.js
+    inside that file export any routes that should be associated with authentcation 
+3. copy the register route and export it from that authenticationcontroller file you just created
+4. then in your routes require that AuthenticationController and store it as a const and simply change the route to AuthenticationController.register(within the app.post)
+5. this is a way to keep things seperate so you're controller is used to control your endpoints and your routes are used to point to those endpoints
+
+===========================Controllers2===========================
+
+1. create a const {User} inside your AuthenticationController file and have it require the models folder so we can use those models
+2. change your register endpoint into an async that will try to await a User.create(req.body)
+    if successful res.send(user.toJSON())
+    otherwise catch the error and send a status400 with an error message 'This email account is already boogaloo' or w/e you want really
+3. now anybody that registers should be saved in your sqlite db
+
+===========================Validation1===========================
+1. npm install  --save joi
+    joi is a framework for validating requests
+2. set up a folder called policies inside src inside server folder
+3. create an AuthenticationControllerPolicy.js file inside that
+4. inside AuthenticationControllerPolicy we're going to create express middleware that's going to validate data constraints as pass or fail
+5. require join into that file and export a register method similar to the one we just made in AuthenticationController
+6. inside your routes import the AuthenticationControllerPolicy file add it as an argument between the path and the AuthenticationController 
+7. so how it works in express:
+    hit the end point,
+    hit the policy middleware, which will call next
+    which will then go to the AuthenticationController.register which will hit the controller
+8. now we can use the built in Joi methods to create some validation for our AuthenticationControllerPolicy to pass onto the AuthenticationController
+===========================Veutify===========================
+
+1. npm install --save vuetify
+    a framework for vue that let's you easily manage css
+2. inside your client import vuetify and import veutify/dist/veutify.min.css
+3. then simply use vuetify with Vue.use(Veutify);
+    after your vue config
