@@ -1,6 +1,5 @@
 ===========================CLIENT===========================
 
-
 this is vue setup stuff you can just check the repo for more information
 1. npm install -g vue-cli
     you can use it to build up template projects using vue
@@ -44,6 +43,7 @@ this is vue setup stuff you can just check the repo for more information
     besides express obvi
 
 ===========================REGISTER===========================
+
 1. npm install --save axios
     a library for doing http requests to a backend
 2. in your client folder create a folder called services and make a file called Api.js
@@ -51,3 +51,49 @@ this is vue setup stuff you can just check the repo for more information
     sets up a type of connector to hit the backend
 3. create another file in services caled AuthenticationService.js
     hits register endpoint
+
+===========================Sequelize===========================
+
+1. npm install --save sequelize sqlite3
+2. in the app.js in src in servers require you models (probably haven't created it at this point but just require what we'll eventually make anyway) and set it as:
+    const {sequelize} = require('./models')
+3. then do sequelize.sync at the end
+    this will connect sequelize to whatever database you have configured it for, and create the tables if they dont exist
+4. follow it up (with a promise) to start up the server afterwards, should look something like this :
+    sequelize.sync()
+    .then(() => {
+        app.listen(process.env.PORT || 8081)
+    })
+---------------------------REFRACTOR---------------------------
+5. tighten up the port by creating a config file in a config folder inside the same folder your app.js is in the server
+    server => config => config
+6. inside that config file export port: 8081
+7. now back in your app.js create a config const thats just requiring './config/config' and set config.port as your server in your app.listen and any server starting message if you want
+8. make a seperate file inside your server src folder and name it routes.js, this is where we're going to move all our routes to keep it seperate from the app.js
+9. inside your routes.js file export a function that will handle the ports
+    should look something like this : 
+    module.exports = (app) => {
+        app.post('/register', (req, res) => {
+            res.send({
+            message: `Your user ${req.body.email} was registered!`
+            })
+        })
+    }
+10. then all you have to do is get rid of any routes in your app.js and instead require your new routes file into app.js and pass it the express app: 
+    require('./routes')(app)
+----------------------------------------------------------------
+
+===========================User MODEL Sequelize===========================
+1. inside the server src create a new folder called models, obviously this will hold all your models
+2. for now create a User model file
+3. create an index.js file inside your models folder
+4. inside the index.js declare a db object and export it
+5. back at the beginning get your boilerplate sequelize requires out of the way: 
+    const fs = require('fs')
+    // how node reads through file systems
+    const path = require('path')
+    // deals with paths
+    const Sequelize = require('sequelize')
+    const config = require('../config/config')
+6.
+
