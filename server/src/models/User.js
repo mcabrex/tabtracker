@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate: hashPassword,
-      beforeUpdate: hashPassword,
-      beforeSave: hashPassword
+      beforeUpdate: hashPassword
+      // beforeSave: hashPassword, this was causing the password to always be false when bcrypting it, double hash or something?
     }
   })
 
