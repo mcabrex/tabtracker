@@ -134,3 +134,53 @@ this is vue setup stuff you can just check the repo for more information
 2. inside your client import vuetify and import veutify/dist/veutify.min.css
 3. then simply use vuetify with Vue.use(Veutify);
     after your vue config
+
+===========================jsonwebtoken===========================
+
+1. npm install --save jsonwebtoken
+    inside your server folder
+    gonna use this to authenticate logins
+2. require it into your AuthenticationController, as well as the config file we made earlier
+3. create a function at the top of your AuthenticationController called jwtSignuser(user){
+
+}
+    this will assign a user object using the jwt library in order to get back a jwt token
+4. in that function make a ONE_WEEK const which is just 60 seconds times 60 minutes times 24 hours times 7 days
+5. then return jwt.sign(user,configt.authentication.jwtSecret, {
+    expiresIn: ONE_WEEK
+})
+6. now define an authentication key in config and give it a key value pair of {
+    jwtSecret: process.env.JWT_SECRET || 'secret
+}
+    this is gonna be used to assign the jwt token using a secret string to determine if the token is valid or not
+===========================Password Hash===========================
+1. npm i --save bcrypt-nodejs
+    gonna use this to encrypt salt hash passwords
+2. npm i --save bluebird
+    use this for your promise library
+3. require both of these into your User.js model
+    const Promise = require('bluebird')
+    const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
+4. in add User model create this prototype: 
+  User.prototype.comparePassword = function (password) {
+    return bcrypt.compareAsync(password, this.password)
+    // assuming the password is being stored using bcrypt well just compare the password entered with the password in the db
+  }
+5. now in the AuthenticationController we can change the password validation const into 
+      const isPasswordValid = await user.comparePassword(password)
+6. add hooks to the User model
+    beforeCreate,beforeUpdate,beforeSave 
+    and have these values be a newly created hashPassword function
+    function hashPassword (user, options) {
+    const SALT_FACTOR = 8
+
+    if (!user.changed('password')) {
+        return
+    }
+    return bcrypt
+        .genSaltAsync(SALT_FACTOR)
+        .then(salt => bcrypt.hashAsync(user.password, salt, null))
+        .then(hash => {
+        user.setDataValue('password', hash)
+        })
+    }

@@ -13,5 +13,9 @@ module.exports = {
       storage: './tabtracker.sqlite'
       // where to store the sqlite files
     }
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret'
+    // assigning the jwt token with a secret string which only be known by this server, used to determine if the jwt token is valid or not
   }
 }

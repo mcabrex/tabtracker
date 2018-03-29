@@ -6,6 +6,10 @@ export default {
     return Api().post('register', credentials);
     // pass an email and password to this post method which will make a post request to a register endpoint on our express server and pass it the credentials
   },
+  login(credentials) {
+    return Api().post('login', credentials);
+    // pass an email and password to this post method which will make a post request to a register endpoint on our express server and pass it the credentials
+  },
 };
 
 // AuthenticationService.register({
