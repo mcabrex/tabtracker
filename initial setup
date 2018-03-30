@@ -184,3 +184,28 @@ this is vue setup stuff you can just check the repo for more information
         user.setDataValue('password', hash)
         })
     }
+
+===========================Vuex===========================
+
+1. npm install --save vuex
+   npm install --save vuex-router-sync
+    into your client folder
+2. in your main.js in your client import:
+    import 'vuetify/dist/vuetify.min.css';
+    import { sync } from 'vuex-router-sync';
+3. add sync(store,router) after your vuetify
+    add store to your Vue object 
+4. in the client src create a store folder with a store.js inside
+5. inside the store.js import Vue or Vuex
+6. have Vue use Vuex and create a new store
+7. Vuex has actions mutations and state
+    you should always invoke your actions from you vue components
+8. vuex is like the redux of vue, in order for the state to change a mutation has to have been invoked and in order for a mutation to happen an action has to have been invoked
+9. in the Login component
+    using the response which will have the username and the token
+    call the store's set token method with a dispatch
+        this.$store.dispatch('setToken', response.data.token)
+10. you can do the same for register
+11. get the vue dev tools chrome extension
+    it will help you keep track of the events that fire off and will help you keep track of the application
+

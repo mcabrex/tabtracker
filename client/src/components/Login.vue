@@ -15,6 +15,7 @@
           <br>
           <v-text-field
             label="Password"
+            type="password"
             v-model="password"
           ></v-text-field>
           <br>
@@ -54,10 +55,13 @@ export default {
     async login(){
       try {
         const response = await AuthenticationService.login({
+          // this will have the username and the token
           email: this.email,
           password: this.password
         })
-        console.log(response.data)
+        this.$store.dispatch('setToken', response.data.token)
+        // call the setToken method, which will call the setToken mutation which will update the states token
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }
