@@ -16,11 +16,19 @@
         </v-tooolbar-items> -->
         <v-spacer></v-spacer>
         <v-tooolbar-items>
-            <v-btn flat dark router to="login">
+            <v-btn 
+                v-if="!$store.state.isUserLoggedIn"
+                flat 
+                dark 
+                router to="login">
                 Login
             </v-btn>
 
-            <v-btn flat dark router to="register">
+            <v-btn 
+                v-if="!$store.state.isUserLoggedIn"
+                flat 
+                dark 
+                router to="register">
                 Sign Up
             </v-btn>
         </v-tooolbar-items>
