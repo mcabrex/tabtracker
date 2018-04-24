@@ -13,7 +13,7 @@
             <v-btn 
                 flat
                 dark
-                router to="songs">
+                router to="/songs">
                 Browse
             </v-btn>
         </v-toolbar-items>
@@ -31,7 +31,7 @@
                 v-if="!$store.state.isUserLoggedIn"
                 flat 
                 dark 
-                router to="login">
+                router to="/login">
                 Login
             </v-btn>
 
@@ -39,7 +39,7 @@
                 v-if="!$store.state.isUserLoggedIn"
                 flat 
                 dark 
-                router to="register">
+                router to="/register">
                 Sign Up
             </v-btn>
         </v-toolbar-items>

@@ -246,4 +246,16 @@ if you want to route to a static page url just put this in the method that youll
                 this.$router.push({
                     name: 'songs'
                 })
+you can also put router to="/specify/what/link/path/you/want" in the tag you want to be routing from
+===========================Field Validation===========================
+in a text field you can add a required tag and give it rules to follow in order to be accepted into the text field  
+            required
+            :rules="[rules.required]"
+                this will go into your data and check the rules object for the required key
+a simple rule can be something like:
+            rules: {
+                required: (value) => !!value || 'Required.'
+            }
+            this just makes the text field say that it's required if you don't type anything
+
                 
