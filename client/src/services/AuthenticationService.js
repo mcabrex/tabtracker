@@ -4,11 +4,11 @@ import Api from '@/services/Api';
 export default {
   register(credentials) {
     return Api().post('register', credentials);
-    // email and password to post method, post request to register endpoint on express server with credentials
+    // email and password to post method, post request to register endpoint
   },
   login(credentials) {
     return Api().post('login', credentials);
-    // pass an email and password to this post method which will make a post request to a register endpoint on our express server and pass it the credentials
+    // pass an email and password to post method, will make ]request to a register endpoint
   },
 };
 

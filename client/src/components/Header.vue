@@ -9,17 +9,17 @@
             >Tabtracker</span>
         </v-toolbar-title>
 
-        <v-tooolbar-items>
+        <v-toolbar-items>
             <v-btn 
                 flat
                 dark
                 router to="songs">
                 Browse
             </v-btn>
-        </v-tooolbar-items>
+        </v-toolbar-items>
         
         <v-spacer></v-spacer>
-        <v-tooolbar-items>
+        <v-toolbar-items>
             <v-btn 
                 v-if="$store.state.isUserLoggedIn"
                 flat
@@ -42,7 +42,7 @@
                 router to="register">
                 Sign Up
             </v-btn>
-        </v-tooolbar-items>
+        </v-toolbar-items>
     </v-toolbar>
 </template>
 

@@ -209,3 +209,41 @@ this is vue setup stuff you can just check the repo for more information
 11. get the vue dev tools chrome extension
     it will help you keep track of the events that fire off and will help you keep track of the application
 
+===========================Smart Components===========================
+
+1. so check out our component Panel which well be using across other components as like a template
+2. all it has is the template we desire and props we want to be able to smartly change based off the component
+3. in order to use this (check out something like CreateSong to see it being used in action) simply import the panel in the scripts
+4. add a components field to the export script and pass it panel
+    components: {
+        Panel
+    }
+5. then in the template in the component you wanna use Panel just use it like an html tag
+    <panel title="whatever title you want" ></panel>
+6. remember the title can change because we added it as a prop
+7. also in our Panel component if we want to add anything between our Panel tag we need to specify a <slot></slot> for it inside our Panel component (check it out)
+8. that way anything we add between <panel>stuff cand be added here</panel> will go into that slot
+
+===========================Event Handling===========================
+1. on input fields where you use v-model, what you pass into that will be coming from your data
+    so in CreateSong component you have something like  
+                <v-text-field
+                    label="Lyrics"
+                    multi-line
+                    v-model="song.lyrics"
+                ></v-text-field>
+    and so when you type into the textfield it will update the data song.lyrics because of it being an object and all looking something like: 
+                data() {
+                    return {
+                        song: {
+                            lyric: null
+                        }
+                    }
+                },
+
+===========================Routing===========================
+if you want to route to a static page url just put this in the method that youll hit when you click something (see CreateSong)
+                this.$router.push({
+                    name: 'songs'
+                })
+                

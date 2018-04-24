@@ -19,7 +19,7 @@ app.use(cors())
 require('./routes')(app)
 // going to return a function that we can pass in our express app to get the appropriate response
 
-sequelize.sync()
+sequelize.sync({force: false})
 // this will connect sequelize to whatever database you have configured and create the tables if they don't exist, if you pass force: true into this sync it will drop the tables DANGEROUS IN PRODUCTION fine locally i guess
   .then(() => {
     // once you're done syncing just start the server
