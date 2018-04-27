@@ -1,5 +1,6 @@
 <template>
-<div>
+    <div>
+
     <v-layout>
         <v-flex xs6>
             <song-metadata :song="song"/>
@@ -9,24 +10,24 @@
             <youtube :youtubeID="song.youtubeID" />    
         </v-flex>
     </v-layout>
-    <v-layout>
+
+    <v-layout class="mt-2">
         <v-flex xs6>
+            <tab :song="song" />
         </v-flex>
         <v-flex xs6 class="ml-2">
-            <panel title="Lyrics">
-                <textarea
-                    readonly
-                    v-model="song.lyrics"
-                ></textarea>
-            </panel>
+            <lyrics :song="song" />
         </v-flex>
     </v-layout>
+
     </div>
 </template>
 
 <script>
 import SongMetadata from './SongMetadata'
 import Youtube from './Youtube'
+import Lyrics from './Lyrics'
+import Tab from './Tab'
 import SongsService from '@/services/SongsService'
 import Panel from '@/components/Panel'
 //in order to use the Panel template we made make sure to include it in the components in the export default
@@ -46,7 +47,9 @@ export default {
     components: {
         Panel,
         SongMetadata,
-        Youtube
+        Youtube,
+        Lyrics,
+        Tab
     }
 }
 </script>
@@ -54,14 +57,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-textarea {
-    width: 100%;
-    font-family: monospace;
-    border: none;
-    height: 600px;
-    border-style: none;
-    border-color: transparent;
-    overflow: auto;
-    padding: 40px;
-}
 </style>
