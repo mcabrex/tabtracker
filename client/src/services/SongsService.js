@@ -10,4 +10,7 @@ export default {
   post(song) {
     return Api().post('songs', song);
   },
+  put(song) {
+    return Api().put(`songs/${song.id}`, song);
+  },
 };

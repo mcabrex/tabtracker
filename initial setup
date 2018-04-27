@@ -247,6 +247,7 @@ if you want to route to a static page url just put this in the method that youll
                     name: 'songs'
                 })
 you can also put router to="/specify/what/link/path/you/want" in the tag you want to be routing from
+
 ===========================Field Validation===========================
 in a text field you can add a required tag and give it rules to follow in order to be accepted into the text field  
             required
@@ -258,4 +259,17 @@ a simple rule can be something like:
             }
             this just makes the text field say that it's required if you don't type anything
 
-                
+===========================Youtube Embedded For Vue===========================
+(note these instructions are for global use)
+1. npm install --save vue-youtube-embed
+2. import it to your main.js and use it 
+    import VueYouTubeEmbed from 'vue-youtube-embed';
+    Vue.use(VueYouTubeEmbed);
+2. import it in your scripts for the component you want to use it in
+    import VueYouTubeEmbed from 'vue-youtube-embed';
+3. put it in your components
+    components: {
+        VueYouTubeEmbed
+    }
+4. check the docs for more info 
+    https://github.com/kaorun343/vue-youtube-embed

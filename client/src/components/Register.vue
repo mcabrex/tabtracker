@@ -21,7 +21,7 @@
         <br>
         <div  class="error" v-html="error"/>
         <br>
-        <v-btn 
+        <v-btn
           dark
           class="cyan"
           @click="register"
@@ -37,39 +37,39 @@
 <script>
 
 import AuthenticationService from '@/services/AuthenticationService';
-import Panel from '@/components/Panel'
+import Panel from '@/components/Panel';
 
 export default {
   data() {
     return {
-      email: "",
-      password: "",
-      error: null
+      email: '',
+      password: '',
+      error: null,
     };
   },
   watch: {
     email(value) {
-      console.log('email has changed', value)
-    }
+      console.log('email has changed', value);
+    },
   },
   methods: {
-    async register(){
+    async register() {
       try {
         const response = await AuthenticationService.register({
           email: this.email,
-          password: this.password
-        })
-        this.$store.dispatch('setToken', response.data.token)
-        // call the setToken method, which will call the setToken mutation which will update the states token
-        this.$store.dispatch('setUser', response.data.user)
+          password: this.password,
+        });
+        this.$store.dispatch('setToken', response.data.token);
+        // setToken method -> setToken mutation ->update the states token
+        this.$store.dispatch('setUser', response.data.user);
       } catch (error) {
-        this.error = error.response.data.error
+        this.error = error.response.data.error;
       }
-    }
+    },
   },
   components: {
-    Panel
-  }
+    Panel,
+  },
 };
 </script>
 
