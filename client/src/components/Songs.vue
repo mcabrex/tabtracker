@@ -21,6 +21,7 @@
                 :key="song.id">
                 <v-layout>
                     <v-flex xs6>
+
                         <div class="song-title">
                             {{song.title}}
                         </div>
@@ -30,6 +31,7 @@
                         <div class="song-genre">
                             {{song.genre}}
                         </div>
+                        
                         <v-btn               
                         dark
                         class="cyan"
