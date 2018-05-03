@@ -29,7 +29,6 @@ import Youtube from './Youtube'
 import Lyrics from './Lyrics'
 import Tab from './Tab'
 import SongsService from '@/services/SongsService'
-import Panel from '@/components/Panel'
 //in order to use the Panel template we made make sure to include it in the components in the export default
 
 export default {
@@ -45,7 +44,6 @@ export default {
         // remember to include .data!!
     },
     components: {
-        Panel,
         SongMetadata,
         Youtube,
         Lyrics,

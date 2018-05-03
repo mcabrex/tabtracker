@@ -37,7 +37,6 @@
 <script>
 
 import AuthenticationService from '@/services/AuthenticationService';
-import Panel from '@/components/Panel';
 
 export default {
   data() {
@@ -47,11 +46,11 @@ export default {
       error: null,
     };
   },
-  watch: {
-    email(value) {
-      console.log('email has changed', value);
-    },
-  },
+  // watch: {
+  //   email(value) {
+  //     console.log('email has changed', value);
+  //   },
+  // },
   methods: {
     async register() {
       try {
@@ -66,9 +65,6 @@ export default {
         this.error = error.response.data.error;
       }
     },
-  },
-  components: {
-    Panel,
   },
 };
 </script>
