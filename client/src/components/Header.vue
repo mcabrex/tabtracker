@@ -4,7 +4,7 @@
             <router-link
                 class="home"
                 tag="span"
-                :to="{name: 'root'}">
+                :to="{name: 'songs'}">
                 Tabtracker</router-link>
         </v-toolbar-title>
 
@@ -53,7 +53,7 @@ export default {
             this.$store.dispatch('setUser',null)
             // TODO: redirect to homepage
             this.$router.push({
-                name: 'root'
+                name: 'songs'
             })
         }
     }
