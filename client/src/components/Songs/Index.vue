@@ -13,11 +13,6 @@ import SongsSearchPanel from './SongsSearchPanel'
 import SongsService from '@/services/SongsService'
 
 export default {
-    methods : {
-        navigateTo(route) {
-            this.$router.push(route)
-        },
-    },
     components: {
         SongsPanel,
         SongsSearchPanel

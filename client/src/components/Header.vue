@@ -1,12 +1,11 @@
 <template>
     <v-toolbar fixed class="cyan" dark>
         <v-toolbar-title class="mr-4">
-            <span
+            <router-link
                 class="home"
-                @click="navigateTo({
-                    name: 'root'
-                })"
-            >Tabtracker</span>
+                tag="span"
+                :to="{name: 'root'}">
+                Tabtracker</router-link>
         </v-toolbar-title>
 
         <v-toolbar-items>
@@ -49,9 +48,6 @@
 <script>
 export default {
     methods: {
-        navigateTo(route) {
-            this.$router.push(route)
-        },
         logout() {
             this.$store.dispatch('setToken',null)
             this.$store.dispatch('setUser',null)
