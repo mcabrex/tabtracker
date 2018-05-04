@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   port: process.env.PORT || 8081,
   // exporting this port to be required in the app.js file to get the app started
@@ -10,7 +12,7 @@ module.exports = {
       // what kind of db we're going to be connecting to
       host: process.env.HOST || 'localhost',
       // telling sequelize the location of the db we want to connect to
-      storage: './tabtracker.sqlite'
+      storage: path.resolve(__dirname, '../../tabtracker.sqlite')
       // where to store the sqlite files
     }
   },
