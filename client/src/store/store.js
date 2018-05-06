@@ -1,11 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
+
 
 Vue.use(Vuex);
 // allows you to access your store in all your vue components
 export default new Vuex.Store({
   strict: true,
   // this means you can never modify the state unless it's through an action or mutation
+  plugins: [
+    createPersistedState(),
+  ],
   state: {
     token: null,
     user: null,

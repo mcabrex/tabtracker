@@ -16,7 +16,7 @@ Vue.use(Veutify);
 Vue.use(VueYouTubeEmbed);
 /* eslint-disable no-new */
 
-Vue.component('panel',Panel)
+Vue.component('panel', Panel);
 
 sync(store, router);
 
