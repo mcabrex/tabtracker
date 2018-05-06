@@ -26,9 +26,11 @@
 <script>
 import SongMetadata from './SongMetadata'
 import Youtube from './Youtube'
+import {mapState} from 'vuex'
 import Lyrics from './Lyrics'
 import Tab from './Tab'
 import SongsService from '@/services/SongsService'
+import SongHistoryService from '@/services/SongHistoryService'
 //in order to use the Panel template we made make sure to include it in the components in the export default
 
 export default {
@@ -37,11 +39,24 @@ export default {
             song: {}
         }
     },
+    computed: {
+        ...mapState([
+            'isUserLoggedIn',
+            'user',
+            'route'
+        ])
+    },
     async mounted(){
-        const songId = this.$store.state.route.params.songId
+        const songId = this.route.params.songId
         // get the vuex store's state and because we synced the route to our store in the main.js file, so whenever the route changes in the UI itll sync with the store so we can grab it, you can test this out in the vuex extension on chrome, the state has a route which is an object that has params
         this.song = (await SongsService.show(songId)).data
         // remember to include .data!!
+        if(this.isUserLoggedIn){
+            SongHistoryService.post({
+                songId,
+                userId: this.user.id
+            })
+        }
     },
     components: {
         SongMetadata,
