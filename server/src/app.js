@@ -15,6 +15,8 @@ app.use(bodyParser.json())
 // allow our express app to easily parse any json request
 app.use(cors())
 
+require('./passport')
+
 require('./routes')(app)
 // going to return a function that we can pass in our express app to get the appropriate response
 

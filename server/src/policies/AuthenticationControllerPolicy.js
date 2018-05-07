@@ -11,7 +11,7 @@ module.exports = {
         // here we are making sure the password passes a regex requirement of being letters a-zA-Z0-9 and that it should be a minimum of 8 characters and a maximum of 32
       )
     }
-    const {error, value} = Joi.validate(req.body, schema)
+    const {error} = Joi.validate(req.body, schema)
     // for Jois validate the first parameter is whatever you're trying to validate and the second parameter is whatever you're trying to validate it against
 
     if (error) {
